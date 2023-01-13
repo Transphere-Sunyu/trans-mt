@@ -14,7 +14,7 @@ function ContextWrapper({ children }) {
 
   const fetchLanguages = async () => {
 
-    const res = await fetch("/languages", {
+    const res = await fetch("https://www.grandetails.com/api/d/languages", {
       method: "GET",
       mode: "no-cors",
       
