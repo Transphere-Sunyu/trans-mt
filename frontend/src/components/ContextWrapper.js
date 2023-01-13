@@ -24,8 +24,8 @@ function ContextWrapper({ children }) {
     })
     
     const langs = await res.json()
-    console.log(langs);
-     setLangList(langs)
+    
+     setLangList(JSON.parse(langs))
 
     // Set Default source and target languages
 

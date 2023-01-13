@@ -15,7 +15,7 @@ export default function DeepL() {
     setLoading(true)
     const res = await fetch("https://www.grandetails.com/api/d/translate", {
       method: "POST",
-      mode: "no-cors",
+      mode: "cors",
       
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -24,7 +24,7 @@ export default function DeepL() {
     })
 
     const translations = await res.json()
-     setTranslation(translations)
+     setTranslation(JSON.parse(translations))
      setLoading(false)
 
   };

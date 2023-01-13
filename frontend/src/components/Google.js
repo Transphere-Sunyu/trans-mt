@@ -22,7 +22,7 @@ export default function Google() {
     setLoading(true);
     const res = await fetch("https://www.grandetails.com/api/g/translate", {
       method: "POST",
-      mode: "no-cors",
+      mode: "cors",
 
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -31,7 +31,7 @@ export default function Google() {
     });
 
     const translations = await res.json();
-    setTranslation(translations);
+    setTranslation(JSON.parse(translations));
     setLoading(false);
   };
 
