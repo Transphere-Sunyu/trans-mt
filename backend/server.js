@@ -45,7 +45,7 @@ app.get("/api/d/languages", (req, res) => {
       target_langs: targetLanguages,
       source_langs: sourceLanguages,
     };
-    res.status(200).send('payload');
+    res.status(200).json(JSON.stringify(payload));
   })();
 });
 
