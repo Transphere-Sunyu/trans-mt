@@ -32,7 +32,7 @@ app.post("/api/d/translate", (req, res) => {
     const payload = {
       translation: result.text,
     };
-    res.json(payload);
+    res.status(200).json(payload);
   })();
 });
 
@@ -45,7 +45,7 @@ app.get("/api/d/languages", (req, res) => {
       target_langs: targetLanguages,
       source_langs: sourceLanguages,
     };
-    res.json(payload);
+    res.status(200).json(payload);
   })();
 });
 
@@ -62,7 +62,7 @@ app.post("/api/g/translate", (req, res) => {
     const payload = {
       translation: translations,
     };
-    res.json(payload);
+    res.status(200).json(payload);
     })();
 
 });
@@ -77,7 +77,7 @@ app.get("/api/g/languages", (req, res) => {
       target_langs: languages,
       source_langs: languages,
     };
-    res.json(payload);
+    res.status(200).json(payload);
   })();
 });
 
