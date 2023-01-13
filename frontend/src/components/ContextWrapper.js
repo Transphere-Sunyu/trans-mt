@@ -16,14 +16,15 @@ function ContextWrapper({ children }) {
 
     const res = await fetch("https://www.grandetails.com/api/d/languages", {
       method: "GET",
-      mode: "no-cors",
+      mode: "cors",
       
       headers: {
         'Content-Type': 'application/json'
     },
     })
-
+    
     const langs = await res.json()
+    console.log(langs);
      setLangList(langs)
 
     // Set Default source and target languages

@@ -6,6 +6,7 @@ const translator = new deepl.Translator(
 const express = require("express");
 const app = express();
 var serviceAccount = require("./serviceAccountKey.json");
+var cors = require('cors');
 
 const translate = new Translate({
   credentials: serviceAccount,
@@ -13,7 +14,7 @@ const translate = new Translate({
 });
 
 
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,7 +33,7 @@ app.post("/api/d/translate", (req, res) => {
     const payload = {
       translation: result.text,
     };
-    res.status(200).json(payload);
+    res.status(200).json(JSON.stringify(payload));
   })();
 });
 
@@ -62,7 +63,7 @@ app.post("/api/g/translate", (req, res) => {
     const payload = {
       translation: translations,
     };
-    res.status(200).json(payload);
+    res.status(200).json(JSON.stringify(payload));
     })();
 
 });
@@ -77,7 +78,7 @@ app.get("/api/g/languages", (req, res) => {
       target_langs: languages,
       source_langs: languages,
     };
-    res.status(200).json(payload);
+    res.status(200).json(JSON.stringify(payload));
   })();
 });
 
