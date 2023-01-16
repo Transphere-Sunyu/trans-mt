@@ -64,7 +64,7 @@ export default function DeepL() {
 
 
   return (
-    <Box w={"100%"} h={"100%"}>
+    <Flex w={"100%"} h={"auto"} flexDirection={'column'}>
       <Box
         h={"100%"}
         contentEditable={true}
@@ -87,6 +87,6 @@ export default function DeepL() {
           </Center>
         </Flex>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

@@ -64,7 +64,7 @@ export default function Google() {
   }, [originalText, targetLanguage]);
 
   return (
-    <Box w={"100%"} h={"100%"}>
+    <Flex w={"100%"} h={"auto"} flexDirection={'column'}>
       <Box
         h={"100%"}
         contentEditable={true}
@@ -91,6 +91,6 @@ export default function Google() {
           </Center>
         </Flex>
       </Flex>
-    </Box>
+    </Flex>
   );
 }
