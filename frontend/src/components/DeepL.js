@@ -71,6 +71,7 @@ export default function DeepL() {
         outline={"none"}
         w={"100%"}
         p={"4%"}
+        minH={'170px'}
       >
        {translation.translation}{loading && '......'}
 

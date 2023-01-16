@@ -71,6 +71,8 @@ export default function Google() {
         outline={"none"}
         w={"100%"}
         p={"4%"}
+        minH={'170px'}
+
       >
         {translation.translation}
         {loading && "......"}

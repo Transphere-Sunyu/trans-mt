@@ -31,9 +31,10 @@ export default function OriginalTextInputBox() {
       borderRadius={"31px"}
       borderColor={"#F3843F"}
       width={`100%`}
-      h={"30%"}
+      h={"fit-content"}
       id="input-box"
       marginBottom={'7%'}
+      minH={`30%`}
     >
       <Flex
         w={"auto"}
@@ -45,10 +46,12 @@ export default function OriginalTextInputBox() {
       </Flex>
       <Box
         p={"4%"}
-        h={"100%"}
+        h={"174px"}
         contentEditable={true}
         onInput={handleText}
         outline={"none"}
+        overflowY={'auto'}
+        
       ></Box>
     </Box>
   );
