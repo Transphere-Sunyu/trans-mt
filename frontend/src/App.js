@@ -13,7 +13,7 @@ export default function App({ Component }) {
   return (
     <ChakraProvider>
       <ContextWrapper>
-        <Container display={'flex'} flexDirection={'column'} justifyContent={'space-evenly'} maxW="4xl" h={'100%'}>
+        <Container centerContent display={'flex'} flexDirection={'column'} maxW="4xl" h={'100%'} pt={`5%`}>
           <OriginalTextInputBox />
           <LanguageSwitcher />
           <TranslationContainer />

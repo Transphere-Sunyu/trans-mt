@@ -17,7 +17,7 @@ export default function TranslationContainer() {
       width={`100%`}
       h={'auto'}
       id="trans-box"
-      // mt={'5%'}
+      mt={'7%'}
     >
       <Flex w={'100%'} p={'2%'} borderBottomColor={`#F3843F`} borderBottomWidth={2} >
         <LanguageSelector type={'target'} />

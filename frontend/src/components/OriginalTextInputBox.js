@@ -33,6 +33,7 @@ export default function OriginalTextInputBox() {
       width={`100%`}
       h={"35%"}
       id="input-box"
+      marginBottom={'7%'}
     >
       <Flex
         w={"auto"}
