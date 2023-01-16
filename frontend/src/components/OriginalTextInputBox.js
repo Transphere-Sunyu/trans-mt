@@ -31,7 +31,7 @@ export default function OriginalTextInputBox() {
       borderRadius={"31px"}
       borderColor={"#F3843F"}
       width={`100%`}
-      h={"35%"}
+      h={"30%"}
       id="input-box"
       marginBottom={'7%'}
     >
