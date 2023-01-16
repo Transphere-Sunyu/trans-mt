@@ -10,10 +10,11 @@ import {
   MenuOptionGroup,
   MenuDivider,
   Center,
+  Spacer,
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import Context from "../contexts/context";
-import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown, BiCrosshair, BiExit, BiWindowClose, BiX } from "react-icons/bi";
 import LanguageSelector from "./LanguageSelector";
 import debounce from "lodash.debounce";
 
@@ -23,6 +24,11 @@ export default function OriginalTextInputBox() {
   const handleText = debounce((e) => {
     setOriginalText(e.target.innerText);
   }, 1000);
+  const  handleRemoveText = () => {
+    const editor = document.getElementById('editor-content')
+    editor.innerText = ''
+    setOriginalText(null)
+  }
   
   return (
     <Box
@@ -43,6 +49,12 @@ export default function OriginalTextInputBox() {
         borderBottomWidth={2}
       >
         <LanguageSelector type={"original"} />
+        <Spacer />
+       {originalText && 
+        <Flex cursor={'pointer'} onClick={handleRemoveText}>
+        <BiX  color="black" size={24}/>
+        </Flex>
+        }
       </Flex>
       <Box
         p={"4%"}
@@ -51,6 +63,7 @@ export default function OriginalTextInputBox() {
         onInput={handleText}
         outline={"none"}
         overflowY={'auto'}
+        id="editor-content"
         
       ></Box>
     </Box>

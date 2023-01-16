@@ -57,6 +57,10 @@ export default function Google() {
         console.log(e.message);
       });
     }
+    
+    if(originalText === null) {
+      setTranslation('')
+     }
 
     return () => {
       console.log("");

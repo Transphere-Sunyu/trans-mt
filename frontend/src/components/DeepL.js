@@ -55,6 +55,9 @@ export default function DeepL() {
        console.log(e.message);
      })
    }
+   if(originalText === null) {
+    setTranslation('')
+   }
   
     return () => {
       console.log('');
