@@ -17,9 +17,10 @@ import Context from "../contexts/context";
 import { BiChevronDown, BiCrosshair, BiExit, BiWindowClose, BiX } from "react-icons/bi";
 import LanguageSelector from "./LanguageSelector";
 import debounce from "lodash.debounce";
+import { Switch } from '@chakra-ui/react'
 
 export default function OriginalTextInputBox() {
-  const { originalLanguage, originalText, setOriginalText } = useContext(Context);
+  const { originalLanguage, originalText, setOriginalText,setShowDiff,showDiff } = useContext(Context);
 
   const handleText = debounce((e) => {
     setOriginalText(e.target.innerText);
@@ -50,6 +51,7 @@ export default function OriginalTextInputBox() {
       >
         <LanguageSelector type={"original"} />
         <Spacer />
+        <Switch colorScheme={"orange"} id='diff-switcher' value={showDiff} isChecked={showDiff} onChange={(e) => setShowDiff(!showDiff)} />
        {originalText && 
         <Flex cursor={'pointer'} onClick={handleRemoveText}>
         <BiX  color="black" size={24}/>

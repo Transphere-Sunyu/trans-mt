@@ -5,9 +5,9 @@ import { MdContentCopy } from "react-icons/md";
 import { RiVolumeUpLine } from "react-icons/ri";
 import Context from "../contexts/context";
 
+
 export default function DeepL() {
-  const {  originalText ,toast ,targetLanguage, copyToClipboard ,speak ,originalLanguage } = useContext(Context);
-  const [translation , setTranslation] = useState('');
+  const {  originalText ,toast ,targetLanguage, copyToClipboard ,speak ,originalLanguage , deeplTranslation ,setDeeplTranslation,showDiff,diffs} = useContext(Context);
   const [loading , setLoading] = useState(false);
   const id = 'test-toast'
 
@@ -24,13 +24,13 @@ export default function DeepL() {
     })
 
     const translations = await res.json()
-     setTranslation(JSON.parse(translations))
+     setDeeplTranslation(JSON.parse(translations))
      setLoading(false)
 
   };
   const handleCopy = () => {
     toast.close(id)
-    copyToClipboard(translation.translation);
+    copyToClipboard(deeplTranslation.translation);
     // if (!toast.isActive(id)) {
       toast({
         // id,
@@ -56,7 +56,7 @@ export default function DeepL() {
      })
    }
    if(originalText === null) {
-    setTranslation('')
+    setDeeplTranslation('')
    }
   
     return () => {
@@ -76,16 +76,26 @@ export default function DeepL() {
         p={"4%"}
         minH={'170px'}
       >
-       {translation.translation}{loading && '......'}
-
+       {/* {deeplTranslation && deeplTranslation.translation} */}
+       {showDiff
+          ? diffs.map((part, index) => {
+              if (!part.removed) {
+                return (
+                  <span key={index} className={part.added ? "added" : ""}>
+                    {part.value}
+                  </span>
+                );
+              }
+            })
+          : deeplTranslation?.translation}{loading && '......'}
       </Box>
       <Flex justifyContent={"space-around"} p={"3%"} w={"100%"}>
         <Image src={logo} />
         <Flex justifyContent={"space-evenly"} w={"20%"}>
-          <Center onClick={handleCopy}  cursor={"pointer"}>
+          <Center onClick={deeplTranslation && handleCopy}  cursor={"pointer"}>
             <MdContentCopy size={24} color={"#A9A5A5"} />
           </Center>
-          <Center onClick={() => speak({text: translation.translation})} cursor={"pointer"}>
+          <Center onClick={() => speak({text: deeplTranslation && deeplTranslation.translation})} cursor={"pointer"}>
             <RiVolumeUpLine size={24} color={"#A9A5A5"} />
           </Center>
         </Flex>

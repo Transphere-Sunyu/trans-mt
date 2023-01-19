@@ -12,7 +12,8 @@ export default function Google() {
     targetLanguage,
     copyToClipboard,
     speak,
-    originalLanguage,
+    showDiff,
+    originalLanguage,diffs,googleTranslation,setGoogleTranslation
   } = useContext(Context);
   const [translation, setTranslation] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,13 +32,13 @@ export default function Google() {
     });
 
     const translations = await res.json();
-    setTranslation(JSON.parse(translations));
+    setGoogleTranslation(JSON.parse(translations));
     setLoading(false);
   };
 
   const handleCopy = () => {
     toast.close(id);
-    copyToClipboard(translation.translation);
+    copyToClipboard(googleTranslation.translation);
     // if (!toast.isActive(id)) {
     toast({
       // id,
@@ -78,8 +79,17 @@ export default function Google() {
         minH={'170px'}
 
       >
-        {translation.translation}
-        {loading && "......"}
+      {showDiff
+          ? diffs.map((part, index) => {
+              if (!part.added) {
+                return (
+                  <span key={index} className={part.removed ? "removed" : ""}>
+                    {part.value}
+                  </span>
+                );
+              }
+            })
+          : googleTranslation?.translation}{loading && '......'}
       </Box>
       <Flex justifyContent={"space-around"} p={"3%"} w={"100%"}>
         <Image src={logo} />
@@ -88,7 +98,7 @@ export default function Google() {
             <MdContentCopy size={24} color={"#A9A5A5"} />
           </Center>
           <Center
-            onClick={() => speak({ text: translation.translation })}
+            onClick={() => speak({ text: googleTranslation.translation })}
             cursor={"pointer"}
           >
             <RiVolumeUpLine size={24} color={"#A9A5A5"} />
