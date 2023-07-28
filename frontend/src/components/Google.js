@@ -21,7 +21,7 @@ export default function Google() {
 
   const fetchTranslations = async (text, target_lang) => {
     setLoading(true);
-    const res = await fetch("https://www.grandetails.com/api/g/translate", {
+    const res = await fetch("https://api.transdigi.xyz/api/g/translate", {
       method: "POST",
       mode: "cors",
 
