@@ -13,7 +13,7 @@ export default function DeepL() {
 
   const fetchTranslations = async (text,target_lang) => {
     setLoading(true)
-    const res = await fetch("https://www.grandetails.com/api/d/translate", {
+    const res = await fetch("https://api.transdigi.xyz/api/d/translate", {
       method: "POST",
       mode: "cors",
       
