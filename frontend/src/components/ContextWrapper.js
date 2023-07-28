@@ -51,7 +51,7 @@ function ContextWrapper({ children }) {
   }, [showDiff, deeplTranslation, googleTranslation]);
 
   const fetchLanguages = async () => {
-    const res = await fetch("https://www.grandetails.com/api/d/languages", {
+    const res = await fetch("https://api.transdigi.xyz/api/d/languages", {
       method: "GET",
       mode: "cors",
 
